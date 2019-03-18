@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import MovieBox from "./movieBox";
 
 class MovieContainer extends Component {
-  state = {};
+  state = {
+    filmsArray: []
+  };
 
   async componentDidMount() {
     const apiUrl = "https://ghibliapi.herokuapp.com/films";
@@ -17,7 +19,7 @@ class MovieContainer extends Component {
     this.state.filmsArray === undefined
       ? console.log("loading")
       : console.log(this.state.filmsArray);
-    return <MovieBox />;
+    return <MovieBox filmsArray={this.state.filmsArray} />;
   }
 }
 
