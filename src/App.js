@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import MovieContainer from "./components/movieContainer";
 
 class App extends Component {
   render() {
-    return <div />;
+    return <MovieContainer />;
   }
 }
 
