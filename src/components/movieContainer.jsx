@@ -18,9 +18,6 @@ class MovieContainer extends Component {
   }
 
   render() {
-    this.state.filmsArray === undefined
-      ? console.log("loading")
-      : console.log(this.state.filmsArray);
     return <MovieBox filmsArray={this.state.filmsArray} />;
   }
 }
