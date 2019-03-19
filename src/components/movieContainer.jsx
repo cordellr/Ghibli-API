@@ -8,6 +8,7 @@ class MovieContainer extends Component {
     filmsArray: []
   };
 
+  //pulls film data from Ghibli API, and sets data to filmsArray in state
   async componentDidMount() {
     const apiUrl = "https://ghibliapi.herokuapp.com/films";
     const filmsArray = await fetch(apiUrl)
