@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import MovieBox from "./movieBox";
+import "isomorphic-fetch";
+import "es6-promise";
 
 class MovieContainer extends Component {
   state = {
@@ -8,11 +10,11 @@ class MovieContainer extends Component {
 
   async componentDidMount() {
     const apiUrl = "https://ghibliapi.herokuapp.com/films";
-    const apiArray = await fetch(apiUrl)
+    const filmsArray = await fetch(apiUrl)
       //takes result and parses into an array of objects
       .then(res => res.json());
     //console.log(filmsArray);
-    this.setState({ filmsArray: apiArray });
+    this.setState({ filmsArray });
   }
 
   render() {
