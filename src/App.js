@@ -2,15 +2,13 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import MovieContainer from "./components/movieContainer";
 import PeopleContainer from "./components/peopleContainer";
+import MovieCard from "./components/movieCard";
 import Home from "./components/home";
 import NavBar from "./components/navBar";
 import "./background.css";
 
 class App extends Component {
-  state = {
-    filmsLoaded: false,
-    peopleLoaded: false
-  };
+  state = {};
 
   render() {
     return (
@@ -19,6 +17,7 @@ class App extends Component {
         <div className="background d-flex flex-column align-items-center">
           <div className="content">
             <Switch>
+              <Route path="/films/:id" component={MovieCard} />
               <Route path="/films" component={MovieContainer} />
               <Route path="/people" component={PeopleContainer} />
               <Route path="/" component={Home} />

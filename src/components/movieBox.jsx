@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MovieBox = props => {
   const { filmsArray } = props;
@@ -22,9 +23,11 @@ const MovieBox = props => {
             >
               <div className="card-header">{film.release_date}</div>
               <div className="card-body">
-                <h5 className="card-title">
-                  <b>{film.title}</b>
-                </h5>
+                <Link to={`/films/${film.id}`}>
+                  <h5 className="card-title">
+                    <b>{film.title}</b>
+                  </h5>
+                </Link>
                 <p className="card-text">{film.description}</p>
               </div>
               <div className="card-footer">
