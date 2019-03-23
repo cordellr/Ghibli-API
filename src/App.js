@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
-import MovieContainer from "./components/movieContainer";
+import { Route, Switch } from "react-router-dom";
 import totoro from "./totoro.png";
-import "./background.css";
+import MovieContainer from "./components/movieContainer";
 import PeopleContainer from "./components/peopleContainer";
+import Home from "./components/home";
+import NavBar from "./components/navBar";
+import "./background.css";
 
 class App extends Component {
   state = {
@@ -11,25 +13,21 @@ class App extends Component {
     peopleLoaded: false
   };
 
-  //ensures people are removed from page, and enables loading of films
-  handleFilms = () => {
-    this.setState({ peopleLoaded: false, filmsLoaded: true });
-  };
-
-  //ensures films are removed from page, and enables loading of people
-  handlePeople = () => {
-    this.setState({ filmsLoaded: false, peopleLoaded: true });
-  };
-
   render() {
     return (
-      <div className="background d-flex flex-column align-items-center">
-        <img src={totoro} alt="logo" className="img-fluid" />
-        <div className="content">
-          <Route path="/films" component={MovieContainer} />
-          <Route path="/people" component={PeopleContainer} />
+      <React.Fragment>
+        <NavBar />
+        <div className="background d-flex flex-column align-items-center">
+          <img src={totoro} alt="logo" className="img-fluid" />
+          <div className="content">
+            <Switch>
+              <Route path="/films" component={MovieContainer} />
+              <Route path="/people" component={PeopleContainer} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

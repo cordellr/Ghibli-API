@@ -5,15 +5,6 @@ const PeopleBox = props => {
 
   return (
     <div>
-      <h1
-        className="d-flex flex-column align-items-center mt-3 p-2"
-        style={{
-          color: "aliceblue",
-          boxShadow: "4px 4px 24px -3px rgba(0,0,0,0.75)"
-        }}
-      >
-        STUDIO GHIBLI PEOPLE
-      </h1>
       <ul className="list-group">
         {peopleArray.map(people => (
           <li
