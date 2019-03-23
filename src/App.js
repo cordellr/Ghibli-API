@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
 import MovieContainer from "./components/movieContainer";
 import totoro from "./totoro.png";
+import "./background.css";
 import PeopleContainer from "./components/peopleContainer";
 
 class App extends Component {
@@ -21,43 +23,12 @@ class App extends Component {
 
   render() {
     return (
-      <div
-        className="d-flex flex-column align-items-center"
-        style={{
-          backgroundImage: "linear-gradient(to bottom right, #86fde8, #acb6e5"
-        }}
-      >
+      <div className="background d-flex flex-column align-items-center">
         <img src={totoro} alt="logo" className="img-fluid" />
-        <div>
-          {/*displays load films button before button is clicked*/}
-          {/*button sets filmsLoaded to true*/}
-          {!this.state.filmsLoaded && (
-            <button
-              type="button"
-              onClick={this.handleFilms}
-              className="btn btn-light m-4"
-            >
-              Load Studio Ghibli <b>Films</b>
-            </button>
-          )}
-          {/*displays load people button before button is clicked*/}
-          {/*button sets peopleLoaded to true*/}
-          {!this.state.peopleLoaded && (
-            <button
-              type="button"
-              onClick={this.handlePeople}
-              className="btn btn-light m-4"
-            >
-              Load Studio Ghibli <b>People</b>
-            </button>
-          )}
+        <div className="content">
+          <Route path="/films" component={MovieContainer} />
+          <Route path="/people" component={PeopleContainer} />
         </div>
-
-        {/*returns MovieContainer with load films button*/}
-        {this.state.filmsLoaded && <MovieContainer />}
-
-        {/*returns PeopleContainer with load people button*/}
-        {this.state.peopleLoaded && <PeopleContainer />}
       </div>
     );
   }
