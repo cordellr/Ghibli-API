@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 class MovieCard extends Component {
   state = {
-    filmsArray: []
+    filmsArray: [],
+    filmIndex: "",
+    film: ""
   };
 
   //pulls film data from Ghibli API, and sets data to filmsArray in state
@@ -11,20 +13,26 @@ class MovieCard extends Component {
     const filmsArray = await fetch(apiUrl)
       //takes result and parses into an array of objects
       .then(res => res.json());
-    //console.log(filmsArray);
     this.setState({ filmsArray });
-  }
 
-  render() {
-    const filmObj = this.state.filmsArray
+    //sets film in state based on id passed in match params
+    const filmIndex = filmsArray
       .map(function(x) {
         return x.id;
       })
       .indexOf(this.props.match.params.id);
+    this.setState({ filmIndex });
 
-    console.log(filmObj);
-    console.log(this.props.match.params);
-    return <h1>{this.props.match.params.id}</h1>;
+    const film = this.state.filmsArray[this.state.filmIndex];
+    this.setState({ film });
+
+    console.log(this.state.film);
+  }
+
+  render() {
+    console.log(this.state.filmIndex);
+
+    return <h1>{this.state.film.title}</h1>;
   }
 }
 
