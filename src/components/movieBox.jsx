@@ -6,7 +6,7 @@ const MovieBox = props => {
 
   return (
     <div>
-      <ul className="list-group">
+      <ul className="list-group m-4">
         {filmsArray.map(film => (
           <li
             key={film.id}
