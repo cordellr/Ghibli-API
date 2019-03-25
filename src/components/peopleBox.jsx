@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PeopleBox = props => {
   const { peopleArray } = props;
@@ -21,7 +22,9 @@ const PeopleBox = props => {
               }}
             >
               <div className="card-body">
-                <p className="card-text">{people.name}</p>
+                <Link to={`/people/${people.id}`}>
+                  <p className="card-text">{people.name}</p>
+                </Link>
               </div>
               <div className="card-footer">
                 <div>
